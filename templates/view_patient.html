@@ -1,0 +1,51 @@
+{% include "header.html" %}
+
+<link href="{{url_for('static', filename = 'css/bootstrap.min.css')}}" rel="stylesheet">
+
+{% block body %}
+<div class="container">
+
+    <div class="row">
+
+        <div class="col md-12">
+
+            <h2>Patient Details</h2>
+
+            {% for row in patients %}
+
+            <p><strong>Name:</strong> {{ patient.name }}</p>
+            <p><strong>Email:</strong> {{ patient.email }}</p>
+            <p><strong>Phone:</strong> {{ patient.phone }}</p>
+
+            <a href="/" class="btn btn-primary">Back to Patient List</a>
+
+            <h3>Records</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Record ID</th>
+                        <th>Diagnosis</th>
+                        <th>Treatment Plan</th>
+                        <th>Date of Visit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for record in records %}
+                    <tr>
+                        <td>{{ record.record_id }}</td>
+                        <td>{{ record.diagnosis }}</td>
+                        <td>{{ record.treatment_plan }}</td>
+                        <td>{{ record.date_of_visit }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
+
+{% include "footer.html" %}
